@@ -7,6 +7,7 @@ public class Launcher {
 	
 	public static void main(String[] args) throws Exception {
 		Execution.exec("bookkeeper");
+		//Prova
 		//Execution.exec("storm");
 	}
 

@@ -11,7 +11,6 @@
 
 	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	<sonar.organization>berna1998</sonar.organization>
-	<sonar.login>6aff163c096bc5e7888d87f614094fb209a6584a</sonar.login>
 	<sonar.projectKey>Berna1998_isw2-ML</sonar.projectKey>
 	<sonar.language>java</sonar.language>
   	

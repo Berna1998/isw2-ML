@@ -16,7 +16,7 @@ import main.java.ml.model.VersionCommits;
 
 public class FilesWriter {
 	private static final Logger logger = LoggerFactory.getLogger(FilesWriter.class);
-	
+	private static String context = "context";
 	public void writeFilesTraining(String nameProj, List<VersionCommits> versionsList, List<JavaClass> classList,
 			int actualRel) {
 		int i = 0;
@@ -27,7 +27,7 @@ public class FilesWriter {
 			try {
 				Files.createDirectories(directory);
 			} catch (IOException e) {
-				logger.warn("context", e);
+				logger.warn(context, e);
 				return;
 			}
 		}
@@ -48,7 +48,7 @@ public class FilesWriter {
 			}
 
 		} catch (IOException e) {
-			logger.warn("context", e);
+			logger.warn(context, e);
 		}
 
 		// Scrivi nel file ARFF
@@ -80,7 +80,7 @@ public class FilesWriter {
 			}
 
 		} catch (IOException e) {
-			logger.warn("context", e);
+			logger.warn(context, e);
 		}
 
 	}
@@ -112,7 +112,7 @@ public class FilesWriter {
 			writeDataInCSV(writerCSV, testVer, classList);
 
 		} catch (IOException e) {
-			logger.warn("context", e);
+			logger.warn(context, e);
 		}
 
 		// Scrivi nel file ARFF
@@ -142,7 +142,7 @@ public class FilesWriter {
 			}
 
 		} catch (IOException e) {
-			logger.warn("context", e);
+			logger.warn(context, e);
 		}
 
 	}
@@ -237,7 +237,7 @@ public class FilesWriter {
 			try {
 				Files.createDirectories(directory);
 			} catch (IOException e) {
-				logger.warn("context", e);
+				logger.warn(context, e);
 				return;
 			}
 		}
@@ -257,7 +257,7 @@ public class FilesWriter {
 			}
 
 		} catch (IOException e) {
-			logger.warn("context", e);
+			logger.warn(context, e);
 		}
 	}
 

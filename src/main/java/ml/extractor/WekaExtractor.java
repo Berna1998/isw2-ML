@@ -15,7 +15,7 @@ import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.supervised.instance.SMOTE;
 import java.util.ArrayList;
 import java.util.List;
-import main.java.ml.model.*;
+
 import main.java.ml.model.ClassifierData;
 
 public class WekaExtractor {

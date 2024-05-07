@@ -7,7 +7,6 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import main.java.ml.model.*;
 import main.java.ml.model.ClassifierData;
 import main.java.ml.model.JavaClass;
 import main.java.ml.model.Ticket;

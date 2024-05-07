@@ -17,7 +17,6 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import main.java.ml.model.*;
 import main.java.ml.model.Ticket;
 import main.java.ml.model.Version;
 

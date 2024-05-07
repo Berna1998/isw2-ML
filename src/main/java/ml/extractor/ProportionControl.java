@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import main.java.ml.model.*;
 import main.java.ml.model.Ticket;
 import main.java.ml.model.Version;
 

@@ -25,7 +25,6 @@ import org.eclipse.jgit.util.io.DisabledOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import main.java.ml.model.*;
 import main.java.ml.model.JavaClass;
 import main.java.ml.model.Ticket;
 import main.java.ml.model.Version;

@@ -7,7 +7,8 @@
   
   	<maven.compiler.source>1.8</maven.compiler.source>
   	<maven.compiler.target>1.8</maven.compiler.target>
-  	
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  
 	<sonar.organization>berna1998-1</sonar.organization>
   	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
   	
@@ -19,7 +20,7 @@
 	<dependency>
     	<groupId>org.json</groupId>
     	<artifactId>json</artifactId>
-    	<version>LATEST</version>
+    	<version>20210307</version>
 	</dependency>
 	
 	<!-- Dependency useful to create and write the file .csv -->

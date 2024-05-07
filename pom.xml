@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <properties>
   
-  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.source>1.8</maven.compiler.source> 
   	<maven.compiler.target>1.8</maven.compiler.target>
   	
   	<sonar.organization>berna1998</sonar.organization>

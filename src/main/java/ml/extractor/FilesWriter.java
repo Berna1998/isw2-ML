@@ -94,7 +94,7 @@ public class FilesWriter {
 			try {
 				Files.createDirectories(directory);
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.warn(context, e);
 				return;
 			}
 		}

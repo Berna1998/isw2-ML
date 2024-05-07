@@ -10,7 +10,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import main.java.ml.model.*;
 import main.java.ml.model.ClassifierData;
 import main.java.ml.model.JavaClass;
 import main.java.ml.model.VersionCommits;
@@ -20,7 +19,7 @@ public class FilesWriter {
 	
 	public void writeFilesTraining(String nameProj, List<VersionCommits> versionsList, List<JavaClass> classList,
 			int actualRel) {
-		int i = 0; 
+		int i = 0;
 		String directoryStr = "csvAndArffFiles/";
 		Path directory = Paths.get(directoryStr);
 
@@ -49,7 +48,7 @@ public class FilesWriter {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.warn("context", e);
 		}
 
 		// Scrivi nel file ARFF
@@ -81,7 +80,7 @@ public class FilesWriter {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.warn("context", e);
 		}
 
 	}
@@ -113,7 +112,7 @@ public class FilesWriter {
 			writeDataInCSV(writerCSV, testVer, classList);
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.warn("context", e);
 		}
 
 		// Scrivi nel file ARFF
@@ -143,7 +142,7 @@ public class FilesWriter {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.warn("context", e);
 		}
 
 	}
@@ -238,7 +237,7 @@ public class FilesWriter {
 			try {
 				Files.createDirectories(directory);
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.warn("context", e);
 				return;
 			}
 		}
@@ -258,7 +257,7 @@ public class FilesWriter {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.warn("context", e);
 		}
 	}
 

@@ -46,7 +46,7 @@ public class Execution {
 		logger.info(mex);
 		
 		List<VersionCommits> commitListVer;
-		commitListVer = ge.seeCommitVersion(allCommList,versionsList);  //associo i commit alle versioni, mi torner‡ il tipo VersionCommits dove per ogni versiono ho lista di commit associati
+		commitListVer = ge.seeCommitVersion(allCommList,versionsList);  //associo i commit alle versioni, mi torner√† il tipo VersionCommits dove per ogni versiono ho lista di commit associati
 		
 		mex = "Le Versioni con COMMIT PRESI SONO: "+commitListVer.size();
 		logger.info(mex);
@@ -66,7 +66,7 @@ public class Execution {
 		ge.associateVersionAndClasses(commitListVer);  //ora le versioni le associo anche alle classi Java
 
 		List<JavaClass> classList;
-		classList = ge.createClassesIstances(commitListVer, ticketWithProportion); //ottengo una lista con tutte le classi ed inoltre grazie ai ticket metto se la classe Ë buggy
+		classList = ge.createClassesIstances(commitListVer, ticketWithProportion); //ottengo una lista con tutte le classi ed inoltre grazie ai ticket metto se la classe √® buggy
 		
 		mex = "LE CLASSI PRESE SONO: "+classList.size();
 		logger.info(mex);
@@ -88,7 +88,7 @@ public class Execution {
 		
 		
 		int halfSize = commitListVer.size() / 2;
-		commitListVer = commitListVer.subList(0, halfSize); //prendo met‡ delle release
+		commitListVer = commitListVer.subList(0, halfSize); //prendo met√† delle release
 		
 		for(i=1;i<=commitListVer.size()-1;i++) {
 			int actualRel = i;

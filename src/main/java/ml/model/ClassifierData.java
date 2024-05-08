@@ -6,7 +6,7 @@ public class ClassifierData {
 	private int iteration;
 	private String classifierName;
 	private boolean featureSel;
-	private boolean sampling;
+	private String sampling;
 	private boolean costSensitive;
 	private double trainingPerc;
 	private double precision;
@@ -18,7 +18,7 @@ public class ClassifierData {
 	private double tn;
 	private double fn;
 	
-	public ClassifierData(String projName, int iteration, String classifierName, boolean featureSel, boolean sampling, boolean costSensitive) {
+	public ClassifierData(String projName, int iteration, String classifierName, boolean featureSel, String sampling, boolean costSensitive) {
 		this.projName = projName;
 		this.iteration = iteration;
 		this.classifierName = classifierName;
@@ -70,11 +70,11 @@ public class ClassifierData {
 		this.featureSel = featureSel;
 	}
 
-	public boolean isSampling() {
+	public String getSampling() {
 		return sampling;
 	}
 
-	public void setSampling(boolean sampling) {
+	public void setSampling(String sampling) {
 		this.sampling = sampling;
 	}
 

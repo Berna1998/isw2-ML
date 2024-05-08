@@ -272,12 +272,7 @@ public class FilesWriter {
 		} else {
 			featureSel = "No";
 		}
-		String sampling = "";
-		if (classifier.isSampling()) {
-			sampling = "Yes";
-		} else {
-			sampling = "No";
-		}
+		String sampling = classifier.getSampling();
 		String costSens = "";
 		if (classifier.isCostSensitive()) {
 			costSens = "Yes";

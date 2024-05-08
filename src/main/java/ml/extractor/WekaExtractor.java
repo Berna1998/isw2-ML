@@ -32,7 +32,7 @@ public class WekaExtractor {
 
 	public static List<List<ClassifierData>> computeWeka(int iterations, String projName) throws Exception {
 		int i = 0;
-		List<List<ClassifierData>> allClassifier = new ArrayList<>();
+		List<List<ClassifierData>> allClassifier = new ArrayList<>(); 
 		List<ClassifierData> basicRandomForestLis = new ArrayList<>();
 		List<ClassifierData> basicNaiveBayesLis = new ArrayList<>();
 		List<ClassifierData> basicIBkLis = new ArrayList<>();

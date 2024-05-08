@@ -23,7 +23,7 @@ public class FilesWriter {
 		String directoryStr = "csvAndArffFiles/";
 		Path directory = Paths.get(directoryStr);
 
-		if (!Files.exists(directory)) {
+		if (!Files.exists(directory)) { 
 			try {
 				Files.createDirectories(directory);
 			} catch (IOException e) {

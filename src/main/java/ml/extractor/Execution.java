@@ -63,6 +63,13 @@ public class Execution {
 
 		mex = "Le Versioni con COMMIT PRESI SONO: " + commitListVer.size();
 		logger.info(mex);
+		
+
+		int halfSize = commitListVer.size() / 2;
+		commitListVer = commitListVer.subList(0, halfSize); // prendo metà delle release
+		
+		mex = "Ora le Versioni con Commit sono: "+ commitListVer.size();
+		logger.info(mex);
 
 		int contaArdo = 0;
 
@@ -102,10 +109,7 @@ public class Execution {
 
 		logger.info("METRICHE FATTE");
 
-		int halfSize = commitListVer.size() / 2;
-		commitListVer = commitListVer.subList(0, halfSize); // prendo metà delle release
-
-		for (i = 1; i <= commitListVer.size() - 1; i++) {
+		for (i = 2; i < commitListVer.size(); i++) {
 			int actualRel = i;
 
 			FilesWriter fl = new FilesWriter();

@@ -1,6 +1,8 @@
 package main.java.ml.extractor;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,6 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.util.io.DisabledOutputStream;
 
 import main.java.ml.model.JavaClass;
-import main.java.ml.model.Ticket;
 
 public class MetricsCalculator {
 
@@ -49,20 +50,6 @@ public class MetricsCalculator {
 		classJ.setNr(nR);
 	}
 
-	public void calculateNFix(Ticket tick, JavaClass jClass) { // POI VEDI SE METTERLO
-		// nFix = numero di difetti
-		int nFix = 0;
-		String key = tick.getKey();
-		List<RevCommit> commLis = jClass.getCommits();
-		for (RevCommit comm : commLis) {
-			String mex = comm.getFullMessage();
-			if (mex.contains(key) && comm.getAuthorIdent().getWhen().compareTo(tick.getFv().getDate()) <= 0
-					&& comm.getAuthorIdent().getWhen().compareTo(tick.getIv().getDate()) > 0) {
-				nFix++;
-			}
-		}
-	}
-
 	public void calculateNAuth(JavaClass classJ) {
 		// nAuth = numero di autori
 		List<String> authorL = new ArrayList<>();
@@ -82,10 +69,10 @@ public class MetricsCalculator {
 		int touchLOC = 0;
 		int addLOC = 0;
 		int maxLOC = 0;
-		double avgAddLOC = 0;
+		float avgAddLOC = 0;
 		int churn = 0;
 		int maxChurn = 0;
-		double avgChurn = 0;
+		float avgChurn = 0;
 
 		int i = 0;
 		int lenLinesLis = jClass.getAddedLinesLis().size();
@@ -108,8 +95,15 @@ public class MetricsCalculator {
 			}
 		}
 		if (lenLinesLis > 0) { // Se ho elementi nella lista faccio la media, sennò è 0
-			avgAddLOC = (double) addLOC / (lenLinesLis); // Avg LOC Added
-			avgChurn = (double) churn / (lenLinesLis); // Avg Churn
+			avgAddLOC = (float) addLOC / (lenLinesLis); // Avg LOC Added
+			BigDecimal bd = new BigDecimal(Float.toString(avgAddLOC));
+	        bd = bd.setScale(2, RoundingMode.DOWN);
+	        avgAddLOC = bd.floatValue();
+			
+			avgChurn = (float) churn / (lenLinesLis); // Avg Churn
+			BigDecimal bd2 = new BigDecimal(Float.toString(avgChurn));
+	        bd2 = bd2.setScale(2, RoundingMode.DOWN);
+	        avgChurn = bd2.floatValue();
 		}
 
 		// I vari set

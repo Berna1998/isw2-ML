@@ -7,7 +7,7 @@ public class Launcher {
 	
 	public static void main(String[] args) throws Exception {
 		Execution.exec("bookkeeper");
-		//Execution.exec("storm");
+		Execution.exec("storm");
 
 	}
 

@@ -74,7 +74,7 @@ public class JiraExtractor {
 			JSONObject json = readJsonFromUrl(url);
 			JSONArray issues = json.getJSONArray("issues");
 			total = json.getInt("total");
-			// VEDI
+			
 			for (; s < total && s < j; s++) {
 				Ticket tick = createTicket(issues, s, versions);
 
@@ -125,7 +125,7 @@ public class JiraExtractor {
 			}
 		} else {
 			if (tempTick.getOv() != null && tempTick.getFv() != null) {
-				// && openingVersion.id()!=releasesList.get(0).id()
+				//&& tempTick.getOv().getIndex()!=versions.get(0).getIndex()
 				return tempTick;
 			}
 		}

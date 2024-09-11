@@ -157,6 +157,5 @@ public class ClassifierData {
 	public void setFn(double fn) {
 		this.fn = fn;
 	}
-	
-	
+		
 }

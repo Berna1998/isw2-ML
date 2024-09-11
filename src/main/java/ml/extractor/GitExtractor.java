@@ -185,7 +185,7 @@ public class GitExtractor {
 			List<RevCommit> commitsList = commitsOfVer.getCommits();
 			for (RevCommit commit : commitsList) {
 				String comment = commit.getFullMessage();
-				// PROVA POI CON comment.matches(".*\\b" + ticket.getKey() + "\\b.*"
+				
 				if ((comment.contains(ticket.getKey() + ":") || comment.contains(ticket.getKey() + "]")
 						|| comment.contains(ticket.getKey() + " ") || comment.contains("/" + ticket.getKey()))
 						&& !listCom.contains(commit)) {

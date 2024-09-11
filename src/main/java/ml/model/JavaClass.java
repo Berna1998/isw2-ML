@@ -19,10 +19,10 @@ public class JavaClass {
 	private int addedLoc;
 
 	private int maxAddedLoc;
-	private double avgAddedLoc;
+	private float avgAddedLoc;
 	private int churn;
 	private int maxChurn;
-	private double avgChurn;
+	private float avgChurn;
 	private String content;
 	
 	private List<Integer> addedLinesLis;
@@ -135,11 +135,11 @@ public class JavaClass {
 		this.maxAddedLoc = maxAddedLoc;
 	}
 
-	public double getAvgAddedLoc() {
+	public float getAvgAddedLoc() {
 		return avgAddedLoc;
 	}
 
-	public void setAvgAddedLoc(double avgAddedLoc) {
+	public void setAvgAddedLoc(float avgAddedLoc) {
 		this.avgAddedLoc = avgAddedLoc;
 	}
 
@@ -160,11 +160,11 @@ public class JavaClass {
 	}
 
 	
-	public double getAvgChurn() {
+	public float getAvgChurn() {
 		return avgChurn;
 	}
 
-	public void setAvgChurn(double avgChurn) {
+	public void setAvgChurn(float avgChurn) {
 		this.avgChurn = avgChurn;
 	}
 

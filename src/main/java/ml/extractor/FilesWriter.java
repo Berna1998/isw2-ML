@@ -10,6 +10,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import main.java.ml.model.Acume;
 import main.java.ml.model.ClassifierData;
 import main.java.ml.model.JavaClass;
 import main.java.ml.model.VersionCommits;
@@ -23,7 +24,7 @@ public class FilesWriter {
 		String directoryStr = "csvAndArffFiles/";
 		Path directory = Paths.get(directoryStr);
 
-		if (!Files.exists(directory)) { 
+		if (!Files.exists(directory)) {
 			try {
 				Files.createDirectories(directory);
 			} catch (IOException e) {
@@ -38,7 +39,7 @@ public class FilesWriter {
 		try (FileWriter writerCSV = new FileWriter(csvFilePath)) {
 
 			writerCSV.append(
-					"Release;Class Name;Size;nR;nAuth;LOC Touched;LOC Added;Max LOC Added;Avg LOC Added;Churn;Max Churn;Avg Churn;Is Buggy");
+					"Release,Class Name,Size,nR,nAuth,LOC Touched,LOC Added,Max LOC Added,Avg LOC Added,Churn,Max Churn,Avg Churn,Is Buggy");
 			writerCSV.append("\n");
 			// Ciclo for dove metto i dati, ogni riga è witer.writeNext
 			for (i = 0; i < actualRel; i++) {
@@ -105,7 +106,7 @@ public class FilesWriter {
 		try (FileWriter writerCSV = new FileWriter(csvFilePath);) {
 
 			writerCSV.append(
-					"Release;Class Name;Size;nR;nAuth;LOC Touched;LOC Added;Max LOC Added;Avg LOC Added;Churn;Max Churn;Avg Churn;Is Buggy");
+					"Release,Class Name,Size,nR,nAuth,LOC Touched,LOC Added,Max LOC Added,Avg LOC Added,Churn,Max Churn,Avg Churn,Is Buggy");
 			writerCSV.append("\n");
 
 			VersionCommits testVer = versionsList.get(actualRel);
@@ -135,8 +136,7 @@ public class FilesWriter {
 
 			VersionCommits testVer = versionsList.get(actualRel);
 			for (JavaClass classJ : classList) {
-				if (classJ.getVersion() == testVer.getVersion()) { // VEDI SE LASCIARE COSI' O METTENDO INDEX CAMBIA,
-																	// AMCHE NEGLI ALTRI
+				if (classJ.getVersion() == testVer.getVersion()) { 
 					writeDataInArff(arffWriter, classJ);
 				}
 			}
@@ -150,8 +150,7 @@ public class FilesWriter {
 	private void writeDataInCSV(FileWriter writer, VersionCommits vers, List<JavaClass> classList) throws IOException {
 
 		for (JavaClass jClass : classList) {
-			if (jClass.getVersion() == vers.getVersion()) { // VEDI SE LASCIARE COSI' O METTENDO INDEX CAMBIA, AMCHE
-															// NEGLI ALTRI
+			if (jClass.getVersion() == vers.getVersion()) { 
 				String className = jClass.getName();
 				String version = vers.getVersion().getName();
 				String size = String.valueOf(jClass.getSize());
@@ -172,29 +171,29 @@ public class FilesWriter {
 				String avgChurn = String.valueOf(jClass.getAvgChurn());
 
 				writer.append(version);
-				writer.append(";");
+				writer.append(",");
 				writer.append(className);
-				writer.append(";");
+				writer.append(",");
 				writer.append(size);
-				writer.append(";");
+				writer.append(",");
 				writer.append(nR);
-				writer.append(";");
+				writer.append(",");
 				writer.append(nAuth);
-				writer.append(";");
+				writer.append(",");
 				writer.append(touchLoc);
-				writer.append(";");
+				writer.append(",");
 				writer.append(addedLoc);
-				writer.append(";");
+				writer.append(",");
 				writer.append(maxAddedLoc);
-				writer.append(";");
+				writer.append(",");
 				writer.append(avgAddedLoc);
-				writer.append(";");
+				writer.append(",");
 				writer.append(churn);
-				writer.append(";");
+				writer.append(",");
 				writer.append(maxChurn);
-				writer.append(";");
+				writer.append(",");
 				writer.append(avgChurn);
-				writer.append(";");
+				writer.append(",");
 				writer.append(buggy);
 				writer.append("\n");
 			}
@@ -220,7 +219,6 @@ public class FilesWriter {
 		String churn = String.valueOf(jClass.getChurn());
 		String maxChurn = String.valueOf(jClass.getMaxChurn());
 		String avgChurn = String.valueOf(jClass.getAvgChurn());
-
 		writer.append(size).append(",").append(nR).append(",").append(nAuth).append(",").append(touchLoc).append(",")
 				.append(addedLoc).append(",").append(maxAddedLoc).append(",").append(avgAddedLoc).append(",")
 				.append(churn).append(",").append(maxChurn).append(",").append(avgChurn).append(",").append(buggy);
@@ -245,7 +243,7 @@ public class FilesWriter {
 		try (FileWriter writerCSV = new FileWriter(csvFilePath);) {
 
 			writerCSV.append(
-					"Project;N° Iteration;Classifier;Feature Selection;Sampling;Cost Sensitive;Training %;Precision;Recall;AUC;Kappa;True Positive;False Positive;True Negative;False Negative");
+					"Project,N° Iteration,Classifier,Feature Selection,Sampling,Cost Sensitive,Training %,Precision,Recall,AUC,Kappa,True Positive,False Positive,True Negative,False Negative");
 			writerCSV.append("\n");
 			// For iterazioni, prendi di ogni lista presente la posizione i-1
 			int i;
@@ -261,8 +259,7 @@ public class FilesWriter {
 		}
 	}
 
-	private static void writeDataFinalCSV(ClassifierData classifier, FileWriter writer, int iteration)
-			throws IOException {
+	private static void writeDataFinalCSV(ClassifierData classifier, FileWriter writer, int iteration) throws IOException {
 		String project = classifier.getProjName();
 		String numIteration = String.valueOf(iteration);
 		String classifierName = classifier.getClassifierName();
@@ -290,34 +287,74 @@ public class FilesWriter {
 		String fn = String.valueOf(classifier.getFn());
 
 		writer.append(project);
-		writer.append(";");
+		writer.append(",");
 		writer.append(numIteration);
-		writer.append(";");
+		writer.append(",");
 		writer.append(classifierName);
-		writer.append(";");
+		writer.append(",");
 		writer.append(featureSel);
-		writer.append(";");
+		writer.append(",");
 		writer.append(sampling);
-		writer.append(";");
+		writer.append(",");
 		writer.append(costSens);
-		writer.append(";");
+		writer.append(",");
 		writer.append(trainingPerc);
-		writer.append(";");
+		writer.append(",");
 		writer.append(precision);
-		writer.append(";");
+		writer.append(",");
 		writer.append(recall);
-		writer.append(";");
+		writer.append(",");
 		writer.append(auc);
-		writer.append(";");
+		writer.append(",");
 		writer.append(kappa);
-		writer.append(";");
+		writer.append(",");
 		writer.append(tp);
-		writer.append(";");
+		writer.append(",");
 		writer.append(fp);
-		writer.append(";");
+		writer.append(",");
 		writer.append(tn);
-		writer.append(";");
+		writer.append(",");
 		writer.append(fn);
 		writer.append("\n");
+	}
+	
+	public static void writeCSVForACUME(String nameProj, List<Acume> acumeList, int iteration,String fileName) {
+		String directoryStr = "ACUMECSV/";
+		String csvFilePath = directoryStr + nameProj + "_"+fileName+"_"+iteration+".csv";
+		Path directory = Paths.get(directoryStr);
+
+		if (!Files.exists(directory)) {
+			try {
+				Files.createDirectories(directory);
+			} catch (IOException e) {
+				logger.warn(context, e);
+				return;
+			}
+		}
+
+		try (FileWriter writerCSV = new FileWriter(csvFilePath);) {
+			writerCSV.append(
+					"ID,Size,Predicted,Actual");
+			writerCSV.append("\n");
+			
+			for(Acume a: acumeList) {
+				String index = String.valueOf(a.getId());
+				String size = String.valueOf(a.getSize());
+				String predicted = String.valueOf(a.getProb());
+				String actual = String.valueOf(a.getActual());
+				
+				writerCSV.append(index);
+				writerCSV.append(",");
+				writerCSV.append(size);
+				writerCSV.append(",");
+				writerCSV.append(predicted);
+				writerCSV.append(",");
+				writerCSV.append(actual);
+				writerCSV.append("\n");
+			}
+			
+		}catch (IOException e) {
+			logger.warn(context, e);
+		}
 	}
 }

@@ -141,10 +141,10 @@ public class JiraExtractor {
 			return false;
 		}
 
-		// Controllo se ci sono Release più grandi della FixVersion
+		// Controllo se ci sono Release più grandi o uguali alla FixVersion
 		for (int i = 0; i < tick.getAv().size(); i++) {
 
-			if (tick.getAv().get(i).getIndex() > tick.getFv().getIndex()) {
+			if (tick.getAv().get(i).getIndex() >= tick.getFv().getIndex()) {
 				return false;
 			}
 

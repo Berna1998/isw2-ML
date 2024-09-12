@@ -30,7 +30,7 @@ public class ProportionControl {
 	public List<Ticket> doProportion(List<Ticket> tickList, List<Version> versions) {
 		List<Ticket> ticketFinalLis = new ArrayList<>();
 		List<Ticket> goodTickets = new ArrayList<>();
-
+		
 		double proportion;
 		for (Ticket tick : tickList) {
 			if (tick.getAv().isEmpty()) {

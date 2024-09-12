@@ -247,7 +247,7 @@ public class FilesWriter {
 			writerCSV.append("\n");
 			// For iterazioni, prendi di ogni lista presente la posizione i-1
 			int i;
-			for (i = 1; i < iterations; i++) {
+			for (i = 1; i < iterations-1; i++) {
 				for (List<ClassifierData> singleList : allValueWeka) {
 					ClassifierData classifier = singleList.get(i - 1);
 					writeDataFinalCSV(classifier, writerCSV, i);

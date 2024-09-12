@@ -57,7 +57,7 @@ public class WekaExtractor {
 		List<ClassifierData> featCostNaiveBayesLis = new ArrayList<>();
 		List<ClassifierData> featCostIBkLis = new ArrayList<>();
 
-		for (i = 1; i < iterations; i++) {
+		for (i = 1; i < iterations-1; i++) {
 
 			// Versioni basic
 			DataSource sourceTr = new DataSource("csvAndArffFiles/" + projName + "_" + i + "_Training.arff"); // FILE DAL TRAINING
